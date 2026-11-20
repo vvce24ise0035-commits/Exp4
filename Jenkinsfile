@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -10,21 +11,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building Python application'
-                bat 'python -m py_compile app.py'
+                echo 'Building Java application'
+                bat 'javac app.java'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Executing automated tests'
-                bat 'python -m unittest app'
+                echo 'Executing Java application tests'
+                bat 'java app'
             }
         }
 
         stage('Run Application') {
             steps {
-                bat 'python app.py'
+                echo 'Running Java application'
+                bat 'java app'
             }
         }
     }
